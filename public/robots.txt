@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zip-encoding-fixer.pages.dev/sitemap.xml
