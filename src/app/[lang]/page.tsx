@@ -612,14 +612,14 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-b from-slate-200 via-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
       <main className="container mx-auto px-4 py-12 max-w-4xl">
         <nav className="flex items-center justify-between gap-4 mb-10">
           <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">
             {t.title}
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <div className="inline-flex rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="inline-flex rounded-lg bg-white dark:bg-slate-800 shadow-md shadow-slate-400/25 dark:shadow-md dark:shadow-black/25 border border-slate-200 dark:border-slate-700 overflow-hidden">
               <button
                 type="button"
                 onClick={() => setTheme('light')}
@@ -660,7 +660,7 @@ export default function Home() {
                 🖥️
               </button>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 px-3 py-2">
+            <div className="inline-flex items-center gap-2 rounded-lg bg-white dark:bg-slate-800 shadow-md shadow-slate-400/25 dark:shadow-md dark:shadow-black/25 border border-slate-200 dark:border-slate-700 px-3 py-2">
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400">🌐</span>
               <select
                 value={currentLang}
@@ -693,8 +693,8 @@ export default function Home() {
             onClick={() => { setMode('zip'); handleReset(); }}
             className={`px-6 py-3 rounded-lg font-medium transition-all ${
               mode === 'zip'
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 shadow-md shadow-slate-400/25 dark:shadow-md dark:shadow-black/25 border border-slate-200 dark:border-slate-600/50 hover:bg-slate-50 dark:hover:bg-slate-600'
             }`}
           >
             {t.zipMode}
@@ -703,8 +703,8 @@ export default function Home() {
             onClick={() => { setMode('folder'); handleReset(); }}
             className={`px-6 py-3 rounded-lg font-medium transition-all ${
               mode === 'folder'
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 shadow-md shadow-slate-400/25 dark:shadow-md dark:shadow-black/25 border border-slate-200 dark:border-slate-600/50 hover:bg-slate-50 dark:hover:bg-slate-600'
             }`}
           >
             {t.folderMode}
@@ -717,10 +717,10 @@ export default function Home() {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all cursor-pointer ${
+            className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all cursor-pointer shadow-lg shadow-slate-400/20 dark:shadow-lg dark:shadow-black/25 ${
               isDragging
-                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                : 'border-slate-300 dark:border-slate-600 hover:border-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
+                : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700/50'
             }`}
             onClick={() => mode === 'zip' ? zipInputRef.current?.click() : folderInputRef.current?.click()}
           >
@@ -772,7 +772,7 @@ export default function Home() {
         {(file || files) && report && (
           <div className="mt-8 space-y-6">
             {/* File Info */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg shadow-slate-400/25 dark:shadow-lg dark:shadow-black/30 border border-slate-200/80 dark:border-slate-700/50">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
@@ -803,19 +803,19 @@ export default function Home() {
               {/* Diagnostic Summary */}
               {mode === 'zip' && (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4 shadow-sm shadow-slate-400/20 dark:shadow-md dark:shadow-black/20 border border-slate-200/80 dark:border-slate-700/50">
                     <p className="text-2xl font-bold text-orange-500">{report.encodingConfidence}%</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">{t.encodingConfidenceLabel}</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4 shadow-sm shadow-slate-400/20 dark:shadow-md dark:shadow-black/20 border border-slate-200/80 dark:border-slate-700/50">
                     <p className="text-2xl font-bold text-purple-500">{report.macosArtifacts}</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">{t.macosArtifactsLabel}</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4 shadow-sm shadow-slate-400/20 dark:shadow-md dark:shadow-black/20 border border-slate-200/80 dark:border-slate-700/50">
                     <p className="text-2xl font-bold text-pink-500">{report.dsStoreFiles}</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">{t.dsStoreLabel}</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4 shadow-sm shadow-slate-400/20 dark:shadow-md dark:shadow-black/20 border border-slate-200/80 dark:border-slate-700/50">
                     <p className="text-2xl font-bold text-blue-500">{report.encodingIssues}</p>
                     <p className="text-sm text-slate-600 dark:text-slate-400">{t.encodingIssuesLabel}</p>
                   </div>
@@ -828,7 +828,7 @@ export default function Home() {
                   <h3 className="font-medium text-slate-800 dark:text-white mb-3">{t.issuesTitle}</h3>
                   <div className="max-h-60 overflow-y-auto space-y-2">
                     {report.issues.slice(0, 20).map((issue, i) => (
-                      <div key={i} className="flex items-start gap-2 text-sm p-2 bg-slate-50 dark:bg-slate-700/50 rounded">
+                      <div key={i} className="flex items-start gap-2 text-sm p-2 bg-slate-50 dark:bg-slate-700/50 rounded shadow-sm shadow-slate-400/15 dark:shadow-sm dark:shadow-black/15 border border-slate-200/80 dark:border-slate-700/40">
                         <span className={`px-2 py-0.5 rounded text-xs font-medium ${
                           issue.type === 'encoding' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300' :
                           issue.type === 'macos_artifact' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300' :
@@ -856,7 +856,7 @@ export default function Home() {
             </div>
 
             {/* Options */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg shadow-slate-400/25 dark:shadow-lg dark:shadow-black/30 border border-slate-200/80 dark:border-slate-700/50">
               <h3 className="font-medium text-slate-800 dark:text-white mb-4">{t.optionsTitle}</h3>
               <div className="space-y-3">
                 <label className="flex items-center gap-3 cursor-pointer">
@@ -906,7 +906,7 @@ export default function Home() {
                 <button
                   onClick={handleProcess}
                   disabled={status === 'processing' || status === 'analyzing'}
-                  className="px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-xl shadow-lg transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all flex items-center gap-2"
                 >
                   {status === 'processing' || status === 'analyzing' ? (
                     <>
@@ -928,7 +928,7 @@ export default function Home() {
               ) : (
                 <button
                   onClick={handleDownload}
-                  className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl shadow-lg transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 transition-all flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -942,8 +942,8 @@ export default function Home() {
 
         {/* Features */}
         <div className="mt-16 grid md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900 flex items-center justify-center mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg shadow-slate-400/25 dark:shadow-lg dark:shadow-black/30 border border-slate-200/80 dark:border-slate-700/50">
+            <div className="w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900 flex items-center justify-center mb-4 shadow-sm shadow-orange-200/50 dark:shadow-md dark:shadow-orange-900/30">
               <svg className="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
               </svg>
@@ -953,8 +953,8 @@ export default function Home() {
               {t.feature1Desc}
             </p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg shadow-slate-400/25 dark:shadow-lg dark:shadow-black/30 border border-slate-200/80 dark:border-slate-700/50">
+            <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-4 shadow-sm shadow-purple-200/50 dark:shadow-md dark:shadow-purple-900/30">
               <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
@@ -964,8 +964,8 @@ export default function Home() {
               {t.feature2Desc}
             </p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
-            <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg shadow-slate-400/25 dark:shadow-lg dark:shadow-black/30 border border-slate-200/80 dark:border-slate-700/50">
+            <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center mb-4 shadow-sm shadow-green-200/50 dark:shadow-md dark:shadow-green-900/30">
               <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
